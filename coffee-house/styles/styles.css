@@ -1,0 +1,69 @@
+@import "variables.css";
+
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+ul,
+ul li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.main-container {
+  box-sizing: border-box;
+  background-color: var(--color-bg-body);
+  padding: 0 40px;
+  width: 1440px;
+  margin: 0 auto;
+}
+
+/* .main-header {
+  display: flex;
+  justify-content: space-between;
+  min-height: 80px;
+}
+
+.main-header .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header .logo img {
+  width: 100px;
+  height: auto;
+}
+
+.main-header .coffee-menu img {
+  width: 20px;
+}
+.main-header .coffee-menu a {
+  color: var(--color-text-dark);
+  text-decoration: none;
+}
+
+.main-nav .list {
+  display: flex;
+  gap: 40px;
+}
+
+.main-nav .item a {
+  text-decoration: none;
+  color: var(--color-text-dark);
+} */

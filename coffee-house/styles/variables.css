@@ -1,0 +1,19 @@
+:root {
+/* colors */
+    --color-text-dark: #403F3D;
+    --color-text-light: #E1D4C9;
+    --color-text-accent: #B0907A;
+    --color-bg-body: #E1D4C9;
+    --color-bg-container: #665F55;
+    --color-bg-backdrop: #403F3D;
+    --color-border-light: #C1B6AD;
+    --color-border-dark: #665F55;
+/*font-sizes */
+    --font-size-heading-1: 72px;
+    --font-size-heading-2: 60px;
+    --font-size-heading-3: 24px;
+    --font-size-text-1: 16px;
+    --font-size-text-2: 10px;
+    --height-heading-1: 105%;
+    --height-heading-2: 125%;
+}
