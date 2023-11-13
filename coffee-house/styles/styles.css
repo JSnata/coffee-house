@@ -32,6 +32,46 @@ img {
   margin: 0 auto;
 }
 
+.primary-heading {
+    color: var(--color-text-light);
+    font-size: var(--font-size-heading-1);
+    font-weight: 600;
+    font-style: italic;
+    line-height: var(--height-heading-1);
+}
+
+.primary-heading span {
+    display: inline-flex;;
+    color: var(--color-text-accent);
+}
+
+.button-primary {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  padding: 0 78px;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  color: var(--color-text-dark);
+  background-color: var(--color-bg-body);
+  cursor: pointer;
+  box-shadow: none;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+}
+.button:hover {
+
+}
+.button:active {
+  outline: none;
+  color: #fff;
+}
+
 .main-header {
   display: flex;
   justify-content: space-between;
@@ -66,4 +106,24 @@ img {
 .main-nav .item a {
   text-decoration: none;
   color: var(--color-text-dark);
+}
+
+/* Enjoy section */
+
+.enjoy {
+    width: 100%;
+    min-height: 644px;
+    border-radius: 40px;
+    padding: 0 100px;
+    background-image: url('../assets/img/img-hero.jpg');
+}
+
+.enjoy .container  {
+    width: 530px;
+}
+
+.enjoy .description {
+    font-size: var(--font-size-text-1);
+    color: var(--color-text-light);
+    margin-bottom: 40px;
 }
