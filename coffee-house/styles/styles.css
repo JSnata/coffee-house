@@ -1,5 +1,9 @@
 @import "variables.css";
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Inter", sans-serif;
   background-color: var(--color-bg-body);
@@ -149,19 +153,31 @@ img {
   height: 18px;
 }
 
-.menu-button::after {
+.link::after {
   position: absolute;
   content: "";
-  opacity: 0;
-  width: 100%;
   height: 2px;
   background-color: var(--color-text-dark);
   bottom: 0;
   left: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.5s ease-in-out;
+  width: 100%;
+  opacity: 0;
+  transform: scaleX(0);
 }
 
-.menu-button:hover::after {
+.link:not(.--disabled):hover::after {
+  opacity: 1;
+  transform-origin: 50% 0;
+  transform: scaleX(1);
+}
+
+.link.--disabled {
+  pointer-events: none; 
+  cursor: auto;
+}
+
+.link.--disabled::after {
   opacity: 1;
 }
 
@@ -178,7 +194,7 @@ img {
   background-color: transparent;
   cursor: pointer;
   box-shadow: none;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease-in-out;
   box-sizing: border-box;
 }
 
@@ -187,6 +203,7 @@ img {
   flex-direction: column;
   text-decoration: none;
   color: var(--color-text-dark);
+  transition: all 0.5s ease-in-out;
 }
 
 .app-button p span:nth-child(1) {
@@ -201,6 +218,22 @@ img {
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
+}
+
+.app-button path {
+  transition: all 0.5s ease-in-out;
+}
+
+.app-button:hover {
+  background-color: var(--color-border-dark);
+}
+
+.app-button:hover p {
+  color: var(--color-bg-body);
+}
+
+.app-button:hover path {
+ fill: var(--color-bg-body);
 }
 /* Header */
 
@@ -229,6 +262,9 @@ img {
 }
 
 .main-nav .item a {
+  position: relative;
+  display: flex;
+  height: 24px;
   font-size: 16px;
   font-weight: 600;
   line-height: 130%;
@@ -270,8 +306,23 @@ img {
 }
 
 .favourites-coffee .slider .arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
-  border: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  border: 1px solid var(--border-dark, #665F55);
+  transition: all 0.5s ease-in-out;
+}
+
+.favourites-coffee .slider .arrow:hover {
+  background: var(--color-bg-container);
+}
+
+.favourites-coffee .slider .arrow:hover svg path {
+  stroke: var(--color-bg-body);
 }
 
 .favourites-coffee .slider .control {
@@ -279,13 +330,13 @@ img {
 }
 
 .favourites-coffee .slider .control.left {
-  left: -2px;
-  top: calc(50% - 55px);
+  left: 4px;
+  top: calc(50% - 52px);
 }
 
 .favourites-coffee .slider .control.right {
-  left: calc(100% - 70px);
-  top: calc(50% - 55px);
+  left: calc(100% - 64px);
+  top: calc(50% - 52px);
 }
 
 .favourites-coffee .slider .list {
@@ -354,36 +405,31 @@ img {
   font-weight: 600;
 }
 
-.grid-container {
+.about .grid-container {
   display: flex;
   gap: 40px;
 }
 
-.grid-container .column-1,
-.grid-container .column-2 {
+.about .column-1,
+.about .column-2 {
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
 
-.column-1 .grid-item:nth-child(1) {
-  background-image: url("../assets/img/about-1.jpg");
-  background-position: center;
+.about .grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.column-1 .grid-item:nth-child(2) {
-  background-image: url("../assets/img/about-2.jpg");
-  background-position: center;
+.about .grid-item img {
+  transform: scale(1.1);
+  transition: transform 0.5s ease-in-out;
 }
 
-.column-2 .grid-item:nth-child(1) {
-  background-image: url("../assets/img/about-3.jpg");
-  background-position: center;
-}
-
-.column-2 .grid-item:nth-child(2) {
-  background-image: url("../assets/img/about-4.jpg");
-  background-position: center;
+.about .grid-item:hover img {
+  transform: scale(1);
 }
 
 .grid-item {
@@ -408,7 +454,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 96px;
+  margin-bottom: 98px;
 }
 
 .mobile-app .content .wrapper {
@@ -437,10 +483,10 @@ img {
 }
 
 /* Menu-block */
-.menu-block {
-  margin-bottom: 100px;
+.menu {
+  margin-bottom: 99px;
 }
-.menu-block .heading-secondary {
+.menu .heading-secondary {
   max-width: 800px;
   margin-top: -2px;
 }
@@ -478,6 +524,7 @@ img {
   font-weight: 600;
   line-height: 150%;
   color: var(--color-text-dark);
+  transition: all 0.5s ease-in-out;
 }
 
 .tab-item button span {
@@ -488,14 +535,21 @@ img {
   height: 30px;
   border-radius: 100px;
   background: var(--color-border-light);
+  transition: all 0.5s ease-in-out;
 }
 
-.tab-item.active button {
+.tab-item.active button,
+.tab-item:not(.active):hover button {
   background-color: var(--color-bg-container);
   color: var(--color-text-light);
 }
 
-.tab-item.active button span {
+.tab-item.active button {
+  cursor: auto;
+}
+
+.tab-item.active button span,
+.tab-item:not(.active):hover button span  {
   background: var(--color-bg-body);
 }
 
@@ -511,6 +565,11 @@ img {
   border-radius: 40px;
   border: 1px solid var(--color-border-light);
 }
+
+.product-card:hover img {
+  transform: scale(1);
+}
+
 .product-card .content {
   padding: 20px;
 }
@@ -542,6 +601,7 @@ img {
 
 .product-card img {
   transform: scale(1.1);
+  transition: transform 0.5s ease-in-out;
 }
 
 /* Main footer */
@@ -586,6 +646,19 @@ img {
   height: 60px;
   border-radius: 100px;
   border: 1px solid var(--color-border-light);
+  transition: all 0.5s ease-in-out;
+}
+
+.main-footer .socials-list .socials-item:hover a {
+  background-color: var(--color-bg-body);
+}
+
+.main-footer .socials-list .socials-item path {
+  transition: all 0.5s ease-in-out;
+}
+
+.main-footer .socials-list .socials-item:hover path {
+  stroke: var(--color-bg-container);
 }
 
 .main-footer .heading-contacts {
@@ -595,19 +668,33 @@ img {
   line-height: 125%;
   color: var(--color-text-light);
   margin: 0;
-  margin-bottom: 40px;
+  margin-bottom: 39px;
 }
 
 .main-footer .contact-list .contact-item {
-  margin-bottom: 20px;
+  display: flex;
+  height: 30px;
+  margin-bottom: 14px;
 }
 
 .main-footer .contact-list .contact-item a {
-  display: flex;
+  position: relative;
   gap: 8px;
   color: var(--color-text-light);
   text-decoration: none;
   margin: 0;
+}
+
+.main-footer .contact-list .contact-item span {
+  color: var(--color-text-light);
+}
+
+.main-footer .contact-list .contact-item span span {
+  margin-left: 8px;
+}
+
+.main-footer .contact-list .contact-item a::after {
+  background-color: var(--color-bg-body);
 }
 
 .main-footer .contact-list .contact-item a span {
@@ -615,4 +702,5 @@ img {
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
+  margin-left: 8px;
 }
