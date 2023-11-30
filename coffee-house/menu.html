@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="./styles/normalize.css">
-    <link rel="stylesheet" href="./styles/styles.css" >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./styles/normalize.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
       rel="stylesheet"
-    >
-    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" >
-    <link rel="apple-touch-icon" sizes="20x20" href="favicon.png" >
-    <link rel="icon" type="image/png" sizes="20x20" href="favicon.png" >
+    />
+    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="20x20" href="favicon.png" />
+    <link rel="icon" type="image/png" sizes="20x20" href="favicon.png" />
     <title>Coffee House - Menu</title>
   </head>
   <body>
@@ -21,21 +21,72 @@
       <header class="main-header">
         <div class="container">
           <a href="index.html" class="logo">
-            <img src="./assets/img/logo.png" alt="logo" >
+            <img src="./assets/img/logo.png" alt="logo" />
           </a>
-          <nav class="main-nav">
-            <ul class="list">
-              <li class="item"><a href="index.html#favourites-coffee" class="link">Favorite coffee</a></li>
-              <li class="item"><a href="index.html#about" class="link">About</a></li>
-              <li class="item"><a href="index.html#mobile-app" class="link">Mobile app</a></li>
-              <li class="item"><a href="#contacts" class="link">Contact us</a></li>
-            </ul>
-          </nav>
-          <div class="coffee-menu">
-            <a href="" class="menu-button link --disabled">
-              <span>Menu</span>
-              <img src="./assets/img/coffee-cup.svg" alt="menu-button" width="20" height="20" >
-            </a>
+          <div class="nav-toggle-block">
+            <button class="nav-toggle-button">
+              <svg
+                width="44"
+                height="44"
+                viewBox="0 0 44 44"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="0.5"
+                  y="0.5"
+                  width="43"
+                  height="43"
+                  rx="21.5"
+                  stroke="#665F55"
+                />
+                <path
+                  d="M14 18H30"
+                  stroke="#403F3D"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M14 26H30"
+                  stroke="#403F3D"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="nav-container">
+            <nav class="main-nav">
+              <ul class="list">
+                <li class="item">
+                  <a href="index.html#favourites-coffee" class="link"
+                    >Favorite coffee</a
+                  >
+                </li>
+                <li class="item">
+                  <a href="index.html#about" class="link">About</a>
+                </li>
+                <li class="item">
+                  <a href="index.html#mobile-app" class="link">Mobile app</a>
+                </li>
+                <li class="item">
+                  <a href="#contacts" class="link">Contact us</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="coffee-menu">
+              <a href="" class="menu-button link --disabled">
+                <span>Menu</span>
+                <img
+                  src="./assets/img/coffee-cup.svg"
+                  alt="menu-button"
+                  width="20"
+                  height="20"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -62,7 +113,7 @@
           <ul class="products-list">
             <li class="product-card">
               <div class="img-container">
-                <img src="./assets/img/coffee-1.jpg" alt="" >
+                <img src="./assets/img/coffee-1.jpg" alt="" />
               </div>
               <div class="content">
                 <h3 class="product-title">Irish coffee</h3>
@@ -75,7 +126,7 @@
             </li>
             <li class="product-card">
               <div class="img-container">
-                <img src="./assets/img/coffee-2.jpg" alt="" >
+                <img src="./assets/img/coffee-2.jpg" alt="" />
               </div>
               <div class="content">
                 <h3 class="product-title">Kahlua coffee</h3>
@@ -88,7 +139,7 @@
             </li>
             <li class="product-card">
               <div class="img-container">
-                <img src="./assets/img/coffee-3.jpg" alt="" >
+                <img src="./assets/img/coffee-3.jpg" alt="" />
               </div>
               <div class="content">
                 <h3 class="product-title">Honey raf</h3>
@@ -100,7 +151,7 @@
             </li>
             <li class="product-card">
               <div class="img-container">
-                <img src="./assets/img/coffee-4.jpg" alt="" >
+                <img src="./assets/img/coffee-4.jpg" alt="" />
               </div>
               <div class="content">
                 <h3 class="product-title">Ice cappuccino</h3>
@@ -112,7 +163,7 @@
             </li>
             <li class="product-card">
               <div class="img-container">
-                <img src="./assets/img/coffee-5.jpg" alt="" >
+                <img src="./assets/img/coffee-5.jpg" alt="" />
               </div>
               <div class="content">
                 <h3 class="product-title">Espresso</h3>
@@ -122,7 +173,7 @@
             </li>
             <li class="product-card">
               <div class="img-container">
-                <img src="./assets/img/coffee-6.jpg" alt="" >
+                <img src="./assets/img/coffee-6.jpg" alt="" />
               </div>
               <div class="content">
                 <h3 class="product-title">Latte</h3>
@@ -135,7 +186,7 @@
             </li>
             <li class="product-card">
               <div class="img-container">
-                <img src="./assets/img/coffee-7.jpg" alt="" >
+                <img src="./assets/img/coffee-7.jpg" alt="" />
               </div>
               <div class="content">
                 <h3 class="product-title">Latte macchiato</h3>
@@ -147,7 +198,7 @@
             </li>
             <li class="product-card">
               <div class="img-container">
-                <img src="./assets/img/coffee-8.jpg" alt="" >
+                <img src="./assets/img/coffee-8.jpg" alt="" />
               </div>
               <div class="content">
                 <h3 class="product-title">Coffee with cognac</h3>
@@ -158,6 +209,16 @@
               </div>
             </li>
           </ul>
+        </div>
+        <div class="refresh-button-wrapper">
+          <button type="button" class="refresh-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="refresh">
+              <path id="Ellipse" d="M21.8883 13.5C21.1645 18.3113 17.013 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C16.1006 2 19.6248 4.46819 21.1679 8" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
+              <path id="Ellipse_2" d="M17 8H21.4C21.7314 8 22 7.73137 22 7.4V3" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              </svg>      
+          </button>
         </div>
       </section>
       <footer class="main-footer" id="contacts">
@@ -244,7 +305,10 @@
             <h3 class="heading-contacts">Contact us</h3>
             <ul class="contact-list">
               <li class="contact-item">
-                <a href="https://maps.app.goo.gl/zBzsu2RpUVhEpSbR6" target="_blank" class="link"
+                <a
+                  href="https://maps.app.goo.gl/zBzsu2RpUVhEpSbR6"
+                  target="_blank"
+                  class="link"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="./styles/normalize.css">
-    <link rel="stylesheet" href="./styles/styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./styles/normalize.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
-      rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="20x20" href="favicon.png">
-    <link rel="icon" type="image/png" sizes="20x20" href="favicon.png">
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="20x20" href="favicon.png" />
+    <link rel="icon" type="image/png" sizes="20x20" href="favicon.png" />
     <title>Coffee House</title>
   </head>
   <body>
@@ -20,21 +21,43 @@
       <header class="main-header">
         <div class="container">
           <span class="logo">
-            <img src="./assets/img/logo.png" alt="logo">
+            <img src="./assets/img/logo.png" alt="logo" />
           </span>
-          <nav class="main-nav">
-            <ul class="list">
-              <li class="item"><a href="#favourites-coffee" class="link">Favorite coffee</a></li>
-              <li class="item"><a href="#about" class="link">About</a></li>
-              <li class="item"><a href="#mobile-app" class="link">Mobile app</a></li>
-              <li class="item"><a href="#contacts" class="link">Contact us</a></li>
-            </ul>
-          </nav>
-          <div class="coffee-menu">
-            <a href="menu.html" class="menu-button link">
-              <span>Menu</span>
-              <img src="./assets/img/coffee-cup.svg" alt="menu icon" width="20" height="20">
-            </a>
+          <div class="nav-toggle-block">
+            <button class="nav-toggle-button">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="43" height="43" rx="21.5" stroke="#665F55"/>
+                <path d="M14 18H30" stroke="#403F3D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 26H30" stroke="#403F3D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>                
+            </button>
+          </div>
+          <div class="nav-container">
+            <nav class="main-nav">
+              <ul class="list">
+                <li class="item">
+                  <a href="#favourites-coffee" class="link">Favorite coffee</a>
+                </li>
+                <li class="item"><a href="#about" class="link">About</a></li>
+                <li class="item">
+                  <a href="#mobile-app" class="link">Mobile app</a>
+                </li>
+                <li class="item">
+                  <a href="#contacts" class="link">Contact us</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="coffee-menu">
+              <a href="menu.html" class="menu-button link">
+                <span>Menu</span>
+                <img
+                  src="./assets/img/coffee-cup.svg"
+                  alt="menu icon"
+                  width="20"
+                  height="20"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -103,7 +126,7 @@
           <ul class="list">
             <li class="item">
               <div class="content">
-                <img src="./assets/img/coffee-slider-1.png" alt="" >
+                <img src="./assets/img/coffee-slider-1.png" alt="" />
                 <h3 class="product-title">S’mores Frappuccino</h3>
                 <p class="product-description">
                   This new drink takes an espresso and mixes it with brown sugar
@@ -116,16 +139,38 @@
           <div class="arrows">
             <div class="control left">
               <button type="button" class="arrow --prev left">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M18.5 12H6M6 12L12 6M6 12L12 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M18.5 12H6M6 12L12 6M6 12L12 18"
+                    stroke="#403F3D"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
               </button>
             </div>
             <div class="control right">
               <button type="button" class="arrow --next right">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18"
+                    stroke="#403F3D"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
               </button>
             </div>
           </div>
@@ -146,12 +191,20 @@
         </h2>
         <ul class="grid-container">
           <li class="column-1">
-            <div class="grid-item lg"><img src="./assets/img/about-1.jpg" alt=""></div>
-            <div class="grid-item sm"><img src="./assets/img/about-2.jpg" alt=""></div>
+            <div class="grid-item lg">
+              <img src="./assets/img/about-1.jpg" alt="" />
+            </div>
+            <div class="grid-item sm">
+              <img src="./assets/img/about-2.jpg" alt="" />
+            </div>
           </li>
           <li class="column-2">
-            <div class="grid-item sm"><img src="./assets/img/about-3.jpg" alt=""></div>
-            <div class="grid-item lg"><img src="./assets/img/about-4.jpg" alt=""></div>
+            <div class="grid-item sm">
+              <img src="./assets/img/about-3.jpg" alt="" />
+            </div>
+            <div class="grid-item lg">
+              <img src="./assets/img/about-4.jpg" alt="" />
+            </div>
           </li>
         </ul>
       </section>
@@ -234,7 +287,7 @@
           </div>
         </div>
         <div class="picture">
-          <img src="./assets/img/mobile-screens.png" alt="mobile screens" >
+          <img src="./assets/img/mobile-screens.png" alt="mobile screens" />
         </div>
       </section>
       <footer class="main-footer" id="contacts">
@@ -321,7 +374,10 @@
             <h3 class="heading-contacts">Contact us</h3>
             <ul class="contact-list">
               <li class="contact-item">
-                <a href="https://maps.app.goo.gl/zBzsu2RpUVhEpSbR6" target="_blank" class="link"
+                <a
+                  href="https://maps.app.goo.gl/zBzsu2RpUVhEpSbR6"
+                  target="_blank"
+                  class="link"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
