@@ -150,6 +150,16 @@ img {
   }
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .button-primary span {
+    translate: 0;
+  }
+
+  .button-primary svg {
+    opacity: 1;
+  }
+}
+
 .menu-button {
   position: relative;
   display: flex;
@@ -516,7 +526,7 @@ img {
 
 .about .heading-secondary {
   text-align: left;
-  line-height: 124%;
+  line-height: 126%;
   font-size: 59.9px;
   font-style: normal;
   font-weight: 600;
@@ -620,21 +630,11 @@ img {
   }
 }
 
-/* @media screen and (max-width: 980px) {
-.about .grid-container {
-    flex-direction: column;
-  }
-
-.about .column-1,
-.about .column-2 {
-  max-width: 726px;
-  margin: 0 auto;
+@media screen and (max-width: 380px) {
+  .about .heading-secondary {
+   line-height: 125%;
 }
-
-.about .column-2 {
-  display: none;
 }
-} */
 
 /* mobile-app */
 
@@ -1072,10 +1072,4 @@ img {
   .main-footer .right {
     padding-top: 0;
   }
-}
-
-/* Hover */
-
-@media (hover: hover) and (pointer: fine) {
-  /* все ховеры здесь */
 }
