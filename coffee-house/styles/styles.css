@@ -316,29 +316,112 @@ img {
   text-decoration: none;
   color: var(--color-text-dark);
 }
+.nav-toggle-block {
+}
+
 .nav-toggle-block .nav-toggle-button {
+  position: relative;
   display: none;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border-radius: 100px;
+  border: 1px solid var(--color-border-dark);
+  transition: transform 0.5s ease;
+}
+
+.nav-toggle-block .nav-toggle-button.close::after {
+  top: 20px;
+  transform: rotate(45deg);
+}
+.nav-toggle-block .nav-toggle-button.close::before {
+  top: 20px;
+  transform: rotate(-45deg);
+}
+
+.nav-toggle-block .nav-toggle-button::before,
+.nav-toggle-block .nav-toggle-button::after {
+  content: '';
+  width: 18px;
+  height: 1.5px;
+  position: absolute;
+  background-color: var(--color-text-dark);
+  border-radius: 1px;
+  transition: transform 0.5s ease;
+}
+
+
+.nav-toggle-block .nav-toggle-button::before {
+  top: calc(50% - 5px);
+  left: calc(50% - 18px / 2);
+}
+
+.nav-toggle-block .nav-toggle-button::after {
+  top: calc(50% + 3px);
+  left: calc(50% - 18px / 2);
 }
 
 @media screen and (max-width: 768px) {
-  .nav-container {
-    position: absolute;
-    top: calc(100% + 4px);
-    background: var(--color-bg-body);
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    height: calc(100vh - 78px - 4px);
+  body.menu-open {
+    overflow: hidden;
   }
-  .main-header .nav-container:not(.-active) {
-    display: none;
+
+  .main-header .nav-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    position: fixed;
+    right: -100%;
+    padding-top: 60px;
+    z-index: 999;
+    top: 100px;
+    height: 100vh;
+    background: var(--color-bg-body);
+    transition: right 0.3s ease;
+  }
+
+  .main-header .nav-container.active {
+    right: 0;
+  }
+
+  .nav-container .main-nav .list{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 76px;
+    margin-bottom: 125px;
+  }
+
+  .nav-container .main-nav .item a {
+    font-size: 32px;
+    line-height: 125%;
+  }
+
+  .nav-container .coffee-menu a {
+    font-size: 32px;
+    line-height: 125%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-container .coffee-menu a img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-container .coffee-menu a span {
+    margin-left: -5px;
+    margin-right: 7px;
+  }
+
+  .nav-container .link.--disabled::after {
+    opacity: 0;
   }
 
   .nav-toggle-block .nav-toggle-button {
-    margin-right: -5px;
     display: block;
-    background: transparent;
-    border: 0;
   }
 }
 
