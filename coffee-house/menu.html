@@ -65,16 +65,16 @@
           <h1 class="heading-secondary">
             Behind each of our cups hides an <span>amazing surprise</span>
           </h1>
-          <div class="tabs">
+          <div class="tabs menu-tabs">
             <ul class="tabs-list">
               <li class="tab-item active">
-                <button type="button"><span>☕</span>Coffee</button>
+                <button type="button" data-category="coffee" onclick="handleTabClick(event)" ><span>☕</span>Coffee</button>
               </li>
               <li class="tab-item">
-                <button type="button"><span>🫖</span>Tea</button>
+                <button type="button" data-category="tea" onclick="handleTabClick(event)" ><span>🫖</span>Tea</button>
               </li>
               <li class="tab-item">
-                <button type="button"><span>🍰</span>Dessert</button>
+                <button type="button" data-category="dessert" onclick="handleTabClick(event)" ><span>🍰</span>Dessert</button>
               </li>
             </ul>
           </div>
@@ -180,15 +180,7 @@
             </li> -->
           </ul>
         </div>
-        <div class="refresh-button-wrapper">
-          <button type="button" class="refresh-button">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g id="refresh">
-              <path id="Ellipse" d="M21.8883 13.5C21.1645 18.3113 17.013 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C16.1006 2 19.6248 4.46819 21.1679 8" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
-              <path id="Ellipse_2" d="M17 8H21.4C21.7314 8 22 7.73137 22 7.4V3" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
-              </g>
-              </svg>      
-          </button>
+        <div class="load-button-wrapper">
         </div>
         <button id="modalOpenButton">Open Popover</button>
         <div id="menuModal" class="menu-modal">
