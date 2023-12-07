@@ -1,3 +1,17 @@
+//fetch data 
+let data = null;
+
+function fetchData() {
+  return fetch("../coffee-house/data/products.json")
+    .then((response) => response.json())
+    .then((jsonData) => {
+      data = jsonData;
+    })
+    .catch((error) => {
+      console.error('Fetch error:', error);
+    });
+}
+
 // Burger menu
 
 const menuToggle = document.querySelector(".nav-toggle-block");
@@ -49,12 +63,7 @@ window.addEventListener("click", (event) => {
 
 // Menu tabs
 
-const insertTabData = (category, flag) => {
-  fetch("../coffee-house/data/products.json")
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
+const insertTabData = (category) => {
       const filteredData = data.filter((item) => item.category === category);
       const productList = document.querySelector(".products-list");
       productList.innerHTML = "";
@@ -64,6 +73,13 @@ const insertTabData = (category, flag) => {
         productCard.classList.add("product-card");
         if (window.innerWidth <= 768 && index >= 4) {
           productCard.classList.add("hidden");
+        }
+        if (window.innerWidth > 768) {
+          const loadButtonWrapper = document.querySelector(
+            ".load-button-wrapper"
+          );
+        
+          loadButtonWrapper.innerHTML = '';
         }
         productCard.innerHTML = `
           <div class="img-container">
@@ -93,7 +109,7 @@ const insertTabData = (category, flag) => {
             <path id="Ellipse_2" d="M17 8H21.4C21.7314 8 22 7.73137 22 7.4V3" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
           </g>
         </svg>  
-        </button>`;
+      </button>`;
 
         const loadButton = document.querySelector(".load-button");
         loadButton.addEventListener("click", () => {
@@ -103,25 +119,36 @@ const insertTabData = (category, flag) => {
           loadButton.style.display = "none";
         });
       }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
 };
 
-function handleTabClick(event) {
+async function handleTabClick(event) {
   const category = event.target.dataset.category;
 
   const tabButtons = document.querySelectorAll(".menu-tabs .tab-item");
   tabButtons.forEach((button) => {
+    
     button.classList.remove("active");
   });
 
-  event.target.parentNode.classList.add("active");
-  
+  const container = event.target.closest(".tab-item");
+  container.classList.add("active");
+
   insertTabData(category, window.innerWidth <= 768);
+
+  const loadButtonWrapper = document.querySelector(
+    ".load-button-wrapper"
+  );
+
+  loadButtonWrapper.innerHTML = '';
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  insertTabData("coffee", window.innerWidth <= 768);
+document.addEventListener("DOMContentLoaded", async () => {
+  await fetchData();
+
+  insertTabData("coffee");
+});
+
+window.addEventListener('resize', () => {
+  const activeButton = document.querySelector('.menu-tabs .tab-item.active button');
+  insertTabData(activeButton.dataset.category);
 });

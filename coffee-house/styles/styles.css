@@ -907,6 +907,8 @@ img {
   border-radius: 100px;
   background: var(--color-border-light);
   transition: all 0.5s ease-in-out;
+  pointer-events: none;
+  user-select: none;
 }
 
 .tab-item.active button {
