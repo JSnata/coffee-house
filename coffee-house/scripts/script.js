@@ -39,27 +39,79 @@ links.forEach((link) => {
 
 // Menu modal window
 
-const modalOpenButton = document.getElementById("modalOpenButton");
 const modal = document.getElementById("menuModal");
-const modalCloseButton = document.getElementById("modalCloseButton");
 const loadButtonWrapper = document.querySelector(".load-button-wrapper");
 
-modalOpenButton.addEventListener("click", () => {
+const modalOpenHandler = () => {
   modal.style.display = "flex";
   document.body.classList.add("popup-opened");
-});
+}
 
-modalCloseButton.addEventListener("click", () => {
+const modalCloseHandler = () => {
   modal.style.display = "none";
   document.body.classList.remove("popup-opened");
-});
+}
 
 window.addEventListener("click", (event) => {
   if (event.target === modal) {
-    modal.style.display = "none";
-    document.body.classList.remove("popup-opened");
+    modalCloseHandler();
   }
 });
+
+const fillModal = async (id) => {
+  const popupData = await data.filter((item) => item.id === +id);
+  console.log(popupData[0].category)
+  // console.log(typeof data[0].id)
+  // console.log(typeof +id)
+  modal.innerHTML = `
+  <div class="menu-modal-container">
+  <div class="img-container">
+    <img src="./assets/img/${popupData[0].image}.jpg" alt="" >
+  </div>
+  <div class="content">
+    <h3 class="product-title">${popupData[0].name}</h3>
+    <p class="product-description">
+    ${popupData[0].description}
+    </p>
+    <div class="tabs size-tabs">
+      <p class="tab-title">Size</p>
+      <ul class="tabs-list">
+        <li class="tab-item active"><button type="button"><span>S</span>${popupData[0].sizes.s.size}</button></li>
+        <li class="tab-item"><button type="button"><span>M</span>${popupData[0].sizes.m.size}</button></li>
+        <li class="tab-item"><button type="button"><span>L</span>${popupData[0].sizes.l.size}</button></li>
+      </ul>
+    </div>
+    <div class="tabs size-tabs">
+      <p class="tab-title">Additives</p>
+      <ul class="tabs-list">
+        <li class="tab-item"><button type="button"><span>1</span>${popupData[0].additives[0].name}</button></li>
+        <li class="tab-item"><button type="button"><span>2</span>${popupData[0].additives[1].name}</button></li>
+        <li class="tab-item"><button type="button"><span>3</span>${popupData[0].additives[2].name}</button></li>
+      </ul>
+    </div>
+    <p class="product-price"><span>Total:</span>${popupData[0].price}</p>
+    <div class="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <g clip-path="url(#clip0_268_12877)">
+          <path d="M8 7.66663V11" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 5.00667L8.00667 4.99926" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7.99967 14.6667C11.6816 14.6667 14.6663 11.6819 14.6663 8.00004C14.6663 4.31814 11.6816 1.33337 7.99967 1.33337C4.31778 1.33337 1.33301 4.31814 1.33301 8.00004C1.33301 11.6819 4.31778 14.6667 7.99967 14.6667Z" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_268_12877">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+        <p>
+          The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.
+        </p>            
+      </div>
+    <button class="button-secondary" id="modalCloseButton" onClick="modalCloseHandler()">Close</button>
+  </div>
+</div>
+  `;
+};
 
 // Menu tabs
 
@@ -71,6 +123,16 @@ const insertTabData = (category) => {
       filteredData.forEach((product, index) => {
         const productCard = document.createElement("li");
         productCard.classList.add("product-card");
+        productCard.id = `${product.id}`;
+
+        productCard.addEventListener('click', (event) => {
+
+          id = event.target.closest(".product-card").id;
+          console.log(id)
+          fillModal(id);
+          modalOpenHandler();
+      });
+
         if (window.innerWidth <= 768 && index >= 4) {
           productCard.classList.add("hidden");
         }
@@ -121,7 +183,7 @@ const insertTabData = (category) => {
       }
 };
 
-async function handleTabClick(event) {
+function handleTabClick(event) {
   const category = event.target.dataset.category;
 
   const tabButtons = document.querySelectorAll(".menu-tabs .tab-item");
@@ -144,7 +206,6 @@ async function handleTabClick(event) {
 
 document.addEventListener("DOMContentLoaded", async () => {
   await fetchData();
-
   insertTabData("coffee");
 });
 
