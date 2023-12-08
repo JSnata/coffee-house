@@ -171,11 +171,9 @@ const hideLoadButton = () => {
 }
 
 const insertTabData = (category) => {
-  // filter data
   const filteredData = data.filter((item) => item.category === category);
-  // clean up products list before new render
   productList.innerHTML = "";
-  // render products for category
+
   filteredData.forEach((product, index) => {
     const productCard = createProductCard(product, index);
     productList.appendChild(productCard);
@@ -219,3 +217,5 @@ window.addEventListener("resize", () => {
   );
   insertTabData(activeButton.dataset.category);
 });
+
+
