@@ -38,6 +38,9 @@ links.forEach((link) => {
 });
 
 // Menu modal window
+let popupPrice = 0;
+let sizeCounter = 0;
+let additivesCounter = 0;
 
 const modal = document.getElementById("menuModal");
 
@@ -49,6 +52,8 @@ const modalOpenHandler = () => {
 const modalCloseHandler = () => {
   modal.style.display = "none";
   document.body.classList.remove("popup-opened");
+  popupPrice = 0;
+  changedPrice = 0;
 };
 
 window.addEventListener("click", (event) => {
@@ -59,6 +64,7 @@ window.addEventListener("click", (event) => {
 
 const renderModal = async (id) => {
   const popupData = await data.filter((item) => item.id === +id);
+  popupPrice = Number(popupData[0].price);
 
   modal.innerHTML = `
   <div class="menu-modal-container">
@@ -73,20 +79,20 @@ const renderModal = async (id) => {
     <div class="tabs size-tabs">
       <p class="tab-title">Size</p>
       <ul class="tabs-list">
-        <li class="tab-item active"><button type="button"><span>S</span>${popupData[0].sizes.s.size}</button></li>
-        <li class="tab-item"><button type="button"><span>M</span>${popupData[0].sizes.m.size}</button></li>
-        <li class="tab-item"><button type="button"><span>L</span>${popupData[0].sizes.l.size}</button></li>
+        <li class="tab-item active"><button type="button" data-value="${popupData[0].sizes.s["add-price"]}" onclick="handleProductSizeClick(event)"><span>S</span>${popupData[0].sizes.s.size}</button></li>
+        <li class="tab-item"><button type="button" data-value="${popupData[0].sizes.m["add-price"]}" onclick="handleProductSizeClick(event)"><span>M</span>${popupData[0].sizes.m.size}</button></li>
+        <li class="tab-item"><button type="button" data-value="${popupData[0].sizes.l["add-price"]}" onclick="handleProductSizeClick(event)"><span>L</span>${popupData[0].sizes.l.size}</button></li>
       </ul>
     </div>
-    <div class="tabs size-tabs">
+    <div class="tabs additives-tabs">
       <p class="tab-title">Additives</p>
       <ul class="tabs-list">
-        <li class="tab-item"><button type="button"><span>1</span>${popupData[0].additives[0].name}</button></li>
-        <li class="tab-item"><button type="button"><span>2</span>${popupData[0].additives[1].name}</button></li>
-        <li class="tab-item"><button type="button"><span>3</span>${popupData[0].additives[2].name}</button></li>
+        <li class="tab-item"><button type="button" data-value="${popupData[0].additives[0]["add-price"]}" onclick="handleProductAdditivesClick(event)"><span>1</span>${popupData[0].additives[0].name}</button></li>
+        <li class="tab-item"><button type="button" data-value="${popupData[0].additives[1]["add-price"]}" onclick="handleProductAdditivesClick(event)"><span>2</span>${popupData[0].additives[1].name}</button></li>
+        <li class="tab-item"><button type="button" data-value="${popupData[0].additives[2]["add-price"]}" onclick="handleProductAdditivesClick(event)"><span>3</span>${popupData[0].additives[2].name}</button></li>
       </ul>
     </div>
-    <p class="product-price"><span>Total:</span>${popupData[0].price}</p>
+    <p class="product-price"><span>Total:</span><span>${popupData[0].price}</span></p>
     <div class="alert">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
         <g clip-path="url(#clip0_268_12877)">
@@ -109,6 +115,46 @@ const renderModal = async (id) => {
 </div>
   `;
 };
+
+const handleProductSizeClick = (e) => {
+  if (e.target.closest(".tab-item").classList.contains("active")){
+    return;
+  }
+  
+  const sizeButtons = document.querySelectorAll(".size-tabs .tab-item");
+  const currentPrice = document.querySelector('.menu-modal .product-price span:nth-child(2)');
+
+  sizeButtons.forEach((button) => {
+    button.classList.remove("active");
+  });
+
+  const container = e.target.closest(".tab-item");
+  container.classList.add("active");
+
+  const currentValue = sizeCounter = Number(e.target.dataset.value);
+
+  currentPrice.innerHTML = `${popupPrice + currentValue + additivesCounter }`;
+
+}
+
+const handleProductAdditivesClick = (e) => {
+  const currentPrice = document.querySelector('.menu-modal .product-price span:nth-child(2)');
+
+  e.target.closest(".tab-item").classList.toggle("active");
+
+  const currentValue = Number(e.target.dataset.value);
+
+  if (e.target.closest(".tab-item").classList.contains("active")){
+    additivesCounter += currentValue;
+    
+  } else {
+    additivesCounter -= currentValue;
+  };
+
+  currentPrice.innerHTML = `${popupPrice + additivesCounter + sizeCounter}`;
+}
+
+
 
 // Menu tabs
 
@@ -179,15 +225,11 @@ const insertTabData = (category) => {
     productList.appendChild(productCard);
   });
 
-  console.log(window.innerWidth)
   if (window.innerWidth > 768) {
     hideLoadButton();
   }
 
   if (window.innerWidth <= 768 && filteredData.length > 4) {
-    console.log('hey');
-    console.log(filteredData);
-    console.log(filteredData.length)
     showLoadButton();
   }
 };
