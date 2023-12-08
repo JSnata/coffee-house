@@ -120,7 +120,7 @@ const handleProductSizeClick = (e) => {
   if (e.target.closest(".tab-item").classList.contains("active")){
     return;
   }
-  
+
   const sizeButtons = document.querySelectorAll(".size-tabs .tab-item");
   const currentPrice = document.querySelector('.menu-modal .product-price span:nth-child(2)');
 
@@ -133,7 +133,7 @@ const handleProductSizeClick = (e) => {
 
   const currentValue = sizeCounter = Number(e.target.dataset.value);
 
-  currentPrice.innerHTML = `${popupPrice + currentValue + additivesCounter }`;
+  currentPrice.innerHTML = `${(popupPrice + currentValue + additivesCounter).toFixed(2)}`;
 
 }
 
@@ -151,7 +151,7 @@ const handleProductAdditivesClick = (e) => {
     additivesCounter -= currentValue;
   };
 
-  currentPrice.innerHTML = `${popupPrice + additivesCounter + sizeCounter}`;
+  currentPrice.innerHTML = `${(popupPrice + additivesCounter + sizeCounter).toFixed(2)}`;
 }
 
 
