@@ -12,7 +12,8 @@ body {
   box-sizing: border-box;
 }
 
-body.popup-opened {
+body.popup-opened,
+body.burger-menu-opened {
   overflow-y: hidden;
 }
 
@@ -399,7 +400,6 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-
   .main-header .nav-container {
     display: flex;
     flex-direction: column;
@@ -412,7 +412,7 @@ img {
     top: 100px;
     height: 100vh;
     background: var(--color-bg-body);
-    transition: right 0.3s ease;
+    transition: right 0.5s ease;
   }
 
   .main-header .nav-container.active {
@@ -518,6 +518,7 @@ img {
   }
   .enjoy {
     padding: 80px 60px;
+    min-height: 552px;
   }
 }
 
@@ -549,6 +550,10 @@ img {
   .enjoy {
     padding: 60px 16px;
   }
+
+  .enjoy .description {
+    padding: 0 6px 0 0;
+  }
 }
 
 /* Favourites section */
@@ -574,11 +579,11 @@ img {
 
 @media (hover: hover) and (pointer: fine) {
   .favourites-coffee .slider-block .arrow:hover {
-      background: var(--color-bg-container);
+    background: var(--color-bg-container);
   }
 
   .favourites-coffee .slider-block .arrow:hover svg path {
-      stroke: var(--color-bg-body);
+    stroke: var(--color-bg-body);
   }
 }
 
@@ -600,7 +605,7 @@ img {
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
-  height: 700px;
+  height: 680px;
   position: relative;
   overflow: hidden;
 }
@@ -608,7 +613,6 @@ img {
 .favourites-coffee .slider-block .slide {
   width: 100%;
   max-width: 100%;
-  height: 640px;
   position: absolute;
   transition: all 0.5s;
   text-align: center;
@@ -617,8 +621,18 @@ img {
   align-items: center;
   justify-content: center;
   gap: 20px;
-
   user-select: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .favourites-coffee .slider-block .slide::after {
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+  }
 }
 
 .favourites-coffee .slide-content {
@@ -634,6 +648,9 @@ img {
   width: 100%;
   height: 480px;
   object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .favourites-coffee .slide .product-title {
@@ -693,11 +710,29 @@ img {
 
 @media screen and (max-width: 565px) {
   .favourites-coffee .slider-block .arrow {
-      display: none;
+    display: none;
   }
 
   .favourites-coffee {
-      margin-bottom: 100px;
+    margin-bottom: 100px;
+  }
+
+  .favourites-coffee .slide .slide-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .favourites-coffee .slider-block .list {
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .favourites-coffee .slider-block .list {
+    height: 572px;
   }
 }
 
@@ -977,6 +1012,11 @@ img {
   user-select: none;
 }
 
+.tab-item button span img {
+  width: 16px;
+  height: auto;
+}
+
 .tab-item.active button {
   background-color: var(--color-bg-container);
   color: var(--color-text-light);
@@ -1084,7 +1124,6 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-
   .menu-grid {
     margin-bottom: 40px;
   }
@@ -1160,6 +1199,12 @@ img {
   margin-bottom: -2px;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .menu-modal .additives-tabs .tab-item.active button {
+    cursor: pointer;
+  }
+}
+
 .menu-modal .tabs-list {
   gap: 8px;
   margin-bottom: 20px;
@@ -1210,7 +1255,7 @@ img {
 
 @media screen and (max-width: 768px) {
   .menu-modal-container {
-    margin: 198px 40px;
+    margin: 0 40px;
     width: 688px;
   }
 
